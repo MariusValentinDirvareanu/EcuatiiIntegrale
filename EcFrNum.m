@@ -23,6 +23,7 @@ function EcFrNum(a,b,lambda,I)
     end
     figure(1)
     for i=1:I+1
+        val(i)=0;
         for j=1:I+1
             if j==1
                 A(i,j)=h/2*lambda*k(x(i),x(1));
@@ -33,7 +34,7 @@ function EcFrNum(a,b,lambda,I)
                     A(i,j)=h*lambda*k(x(i),x(j));
                 end
             end
-            val(i)=A(i,j)*U(j,1);
+            val(i)=val(i)+A(i,j)*U(j,1);
         end
         U(i,1)=val(i)+F(i,1);
     end
