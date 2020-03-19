@@ -1,19 +1,17 @@
 % Ecuatia integrala Fredholm de speta a 2-a. Metoda numerica
 % Dirvareanu Marius-Valentin 1341a
-function EcFrNum(a,b,lambda,N,I)
-    %N=1,I=5
-    F=zeros(N+1,1);
+function EcFrNum(a,b,lambda,I)
+    %I=5
+    F=zeros(I+1,1);
     U=F;
     A=zeros(I+1);
     h=(b-a)/I;
     x=a:h:b;
     function k=k(x,t)
-        if x>0 && x<t
-            k=sint(x)*cos(t);
+        if (x>0 && x<t)
+            k=sin(x)*cos(t);
         else
-            if x>=t && x<=pi
-                k=sin(t)*cos(x);
-            end
+            k=sin(t)*cos(x);
         end
     end
 
@@ -23,6 +21,7 @@ function EcFrNum(a,b,lambda,N,I)
     for i=1:I+1
         F(i,1)=f(x(i));
     end
+    figure(1)
     for i=1:I+1
         for j=1:I+1
             if j==1
@@ -34,12 +33,9 @@ function EcFrNum(a,b,lambda,N,I)
                     A(i,j)=h*lambda*k(x(i),x(j));
                 end
             end
-            U(i,1)=A(i,j)*U(j,1)+F(i,1);
+            val(i)=A(i,j)*U(j,1);
         end
+        U(i,1)=val(i)+F(i,1);
     end
-    
-    F
-    A
-    U
-    %plot(x,U,'r');
+    plot(x,U,'r');
 end
