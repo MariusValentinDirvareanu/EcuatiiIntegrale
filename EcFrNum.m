@@ -1,33 +1,45 @@
 % Ecuatia integrala Fredholm de speta a 2-a. Metoda numerica
 % Dirvareanu Marius-Valentin 1341a
-function EcFrNum(a,b,alfa,N,I)
+function EcFrNum(a,b,lambda,N,I)
     %N=1,I=5
-    u=zeros(N+1);
+    F=zeros(N+1,1);
+    U=F;
+    A=zeros(I+1);
     h=(b-a)/I;
     x=a:h:b;
-    function k=k(x,y)
-        k=x*y/50;
+    function k=k(x,t)
+        if x>0 && x<t
+            k=sint(x)*cos(t);
+        else
+            if x>=t && x<=pi
+                k=sin(t)*cos(x);
+            end
+        end
     end
 
     function f=f(x)
-        f=pi*x/50*(cos(alfa*pi)-1)+sin(alfa*x);
+        f=cos(x);
     end
-
     for i=1:I+1
-        u(1,i)=f(x(i));
+        F(i,1)=f(x(i));
     end
-    figure(1);
-    plot(x,u(1,:));
-    hold on;
-    for n=1:N
-        for i=1:I+1
-            for j=1:I+1
-                val(j)=k(x(i),x(j))*u(n,j);
+    for i=1:I+1
+        for j=1:I+1
+            if j==1
+                A(i,j)=h/2*lambda*k(x(i),x(1));
+            else
+                if j==I+1
+                    A(i,j)=h/2*lambda*k(x(i),x(I+1));
+                else 
+                    A(i,j)=h*lambda*k(x(i),x(j));
+                end
             end
-            u(n+1,i)=trapz(x,val)+f(x(i));
+            U(i,1)=A(i,j)*U(j,1)+F(i,1);
         end
-        
-        plot(x,u(n+1,:));
-        hold on;
     end
+    
+    F
+    A
+    U
+    %plot(x,U,'r');
 end
