@@ -6,7 +6,7 @@ function EcFr(a,b,alfa,N,I)
     h=(b-a)/I;
     x=a:h:b;
     function k=k(x,y)
-        k=x*y/50;
+        k=x*y/25;
 %         if (x>0 && x<y)
 %             k=sin(x)*cos(y);
 %         else
@@ -15,7 +15,7 @@ function EcFr(a,b,alfa,N,I)
     end
 
     function f=f(x)
-        f=pi*x/50*(cos(alfa*pi)-1)+sin(alfa*x);
+        f=pi*x/25*(cos(alfa*pi)-1)+sin(alfa*x);
         %f=cos(x);
     end
 
@@ -23,7 +23,7 @@ function EcFr(a,b,alfa,N,I)
         u(1,i)=f(x(i));
     end
     figure(1);
-    plot(x,u(1,:),'r');
+    plot(x,u(1,:));
     hold on;
     for n=1:N
         for i=1:I+1
@@ -33,7 +33,7 @@ function EcFr(a,b,alfa,N,I)
             u(n+1,i)=trapz(x,val)+f(x(i));
         end
         
-        plot(x,u(n+1,:),'b');
+        plot(x,u(n+1,:));
         hold on;
     end
 end
