@@ -1,14 +1,13 @@
 % Ecuatia integrala Fredholm de speta a 2-a. Metoda numerica
+% Laborator 3
 % Dirvareanu Marius-Valentin 1341a
 function EcFrNum(a,b,lambda,I)
-    %I=5
     F=zeros(I+1,1);
     U=F;
     A=zeros(I+1);
     h=(b-a)/I;
     x=a:h:b;
     function k=k(x,t)
-%         k=x*t/25;
         if (x>0 && x<t)
             k=sin(x)*cos(t);
         else
@@ -18,7 +17,6 @@ function EcFrNum(a,b,lambda,I)
 
     function f=f(x)
         f=cos(x);
-%         f=pi*x/25*(cos(lambda*pi)-1)+sin(lambda*x);
     end
     for i=1:I+1
         F(i,1)=f(x(i));

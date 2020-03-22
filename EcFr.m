@@ -1,4 +1,5 @@
 % Ecuatia integrala Fredholm de speta a 2-a. Metoda aprox succesive
+% Laborator 1
 % Dirvareanu Marius-Valentin 1341a
 function EcFr(a,b,alfa,N,I)
     %N=1,I=5
@@ -6,17 +7,11 @@ function EcFr(a,b,alfa,N,I)
     h=(b-a)/I;
     x=a:h:b;
     function k=k(x,y)
-        k=x*y/25;
-%         if (x>0 && x<y)
-%             k=sin(x)*cos(y);
-%         else
-%             k=sin(y)*cos(x);
-%         end
+        k=x*y/50;
     end
 
     function f=f(x)
-        f=pi*x/25*(cos(alfa*pi)-1)+sin(alfa*x);
-        %f=cos(x);
+        f=pi*x/50*(cos(alfa*pi)-1)+sin(alfa*x);
     end
 
     for i=1:I+1
