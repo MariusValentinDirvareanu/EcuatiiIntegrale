@@ -25,7 +25,15 @@ function Fredholm2NucleuFinit(alpha,beta,lambda,a,b,N,M)
     end
 
     x=a:h:b; 
+    
+    for i=1:M+1
+        u(1,i)=f(x(i));
+    end
+    
     % Calcul
+    figure(1);
+%     plot(x,u(1,:));
+%     hold on;
     for k=1:N
         for j=1:N
             for i=1:M+1
@@ -37,6 +45,8 @@ function Fredholm2NucleuFinit(alpha,beta,lambda,a,b,N,M)
             B(j,1)=trapz(x,integrand2);
             C(j,1)=lambda*A(j,k).*C(j,1)+B(j,1);
             u(k+1,j)=lambda*val(j);
+            plot(x,u(k+1,:));
+            hold on;
         end
     end
     
