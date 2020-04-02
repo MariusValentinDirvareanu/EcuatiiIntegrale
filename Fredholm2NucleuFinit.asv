@@ -31,18 +31,20 @@ function Fredholm2NucleuFinit(alpha,beta,lambda,a,b,N,M)
             for i=1:M+1
                 integrand(i)=phi(k,x(i))*psi(j,x(i));
                 integrand2(i)=psi(j,x(i))+f(x(i));
-                val(j)=C(j,1)*phi(j,x(i))+f(x(i));
             end
             A(j,k)=trapz(x,integrand);
             B(j,1)=trapz(x,integrand2);
             C(j,1)=lambda*A(j,k).*C(j,1)+B(j,1);
-            u(k+1,j)=lambda*val(j);
+            
         end
+        u(k+1,j)=lambda*
     end
     
     
     A
     B
     C
-    u
+%     for i=1:M+1
+%         C(1,i)=A.*C+B;
+%     end
 end
