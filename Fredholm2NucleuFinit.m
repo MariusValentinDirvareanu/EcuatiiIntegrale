@@ -26,14 +26,10 @@ function Fredholm2NucleuFinit(alpha,beta,lambda,a,b,N,M)
 
     x=a:h:b; 
     
-    for i=1:M+1
-        u(1,i)=f(x(i));
-    end
+    u=zeros(1,M+1);
     
     % Calcul
     figure(1);
-%     plot(x,u(1,:));
-%     hold on;
     for k=1:N
         for j=1:N
             for i=1:M+1
@@ -49,10 +45,4 @@ function Fredholm2NucleuFinit(alpha,beta,lambda,a,b,N,M)
             hold on;
         end
     end
-    
-    
-    A
-    B
-    C
-    u
 end
