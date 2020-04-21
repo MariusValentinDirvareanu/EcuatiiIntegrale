@@ -1,5 +1,8 @@
 clc;clear all; close all;
-for i=1:3
-    I=4^i;
-    Volttera(10,I)
+% Ecuatia integrala Volttera. Iteratii multiple
+% Laborator 5
+% Dirvareanu Marius-Valentin 1341a
+for i=5:15
+    I=4*i;
+    Volttera(10,I);
 end
