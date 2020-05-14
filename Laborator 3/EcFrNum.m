@@ -37,4 +37,5 @@ function EcFrNum(a,b,lambda,I)
         end
     end
     plot(x,U,'r');
+    legend('U');
 end

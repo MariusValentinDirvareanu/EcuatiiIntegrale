@@ -31,4 +31,5 @@ function EcFr(a,b,alfa,N,I)
         plot(x,u(n+1,:));
         hold on;
     end
+    legend('U');
 end
