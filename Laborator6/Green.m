@@ -44,29 +44,30 @@ function Green(l,N)
         end
     end
     
-    for i=1:N+1
-        for j=1:N+1
-            valG(i,j)=G(i,j);
-        end
-    end
-    
-    figure(1)
-    surf(y,x,valG)
+%     for i=1:N+1
+%         for j=1:N+1
+%             valG(i,j)=G(i,j);
+%         end
+%     end
+%     
+%     figure(1)
+%     surf(y,x,valG)
     
     
     for i=1:length(x)
         for j=1:length(y)
             int(j)=G(i,j)*f(y(j));
         end
-        U(i)=trapz(y,int)
+        U(i)=trapz(y,int);
     end
-    figure(2);
-    plot(x,phi1);
-    legend('x','Phi 1');
-    figure(3);
-    plot(y,phi2);
-    legend('x','Phi 2');
-    figure(4);
+%     figure(2);
+%     plot(x,phi1);
+%     legend('x','Phi 1');
+%     figure(3);
+%     plot(y,phi2);
+%     legend('x','Phi 2');
+%     figure(4);
     plot(x,U);
+    hold on;
     legend('U');
 end
